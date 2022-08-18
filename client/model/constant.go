@@ -6,5 +6,5 @@ const (
 	MsgTypeJoin     = 30
 	MsgTypeCreate   = 40
 	MsgTypeBot      = 50
-	MSGTypeError    = -1
+	MsgTypeError    = -1
 )

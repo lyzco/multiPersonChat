@@ -29,7 +29,7 @@ go build main.go
 
 ## Maintainers
 
-[@lyz-sys](https://github.com/lyz-sys).
+[@lyzco](https://github.com/lyzco).
 
 I love my weeds, but I hate this ground decorated with weeds.   --Lu Xun
 

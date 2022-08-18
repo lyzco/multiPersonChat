@@ -129,7 +129,7 @@ optCheck:
 					if err != nil {
 						return
 					}
-				case model.MSGTypeError:
+				case model.MsgTypeError:
 					zap.S().Error("get ws message failed")
 					os.Exit(1)
 				default:

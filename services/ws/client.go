@@ -70,7 +70,7 @@ func HandleMsg(c *Client, msg []byte) {
 
 	if c.RoomId == 0 && wsRequest.Type != 30 && wsRequest.Type != 40 {
 		res := model.Response{
-			Type: model.MSGTypeError,
+			Type: model.MsgTypeError,
 			Msg:  "请先加入房间",
 		}
 		resJson, _ := json.Marshal(res)
@@ -99,12 +99,12 @@ func HandleMsg(c *Client, msg []byte) {
 		if requestData != nil {
 			c.Username = requestData["userName"].(string)
 
-			roomId, _ := strconv.Atoi(strconv.FormatFloat(requestData["roomId"].(float64), 'f', model.MSGTypeError, 64))
+			roomId, _ := strconv.Atoi(strconv.FormatFloat(requestData["roomId"].(float64), 'f', model.MsgTypeError, 64))
 			room := Manager.GetRoomById(roomId)
 
 			if room == nil {
 				res := model.Response{
-					Type: model.MSGTypeError,
+					Type: model.MsgTypeError,
 					Msg:  "房间不存在，请重试",
 				}
 				resJson, _ := json.Marshal(res)
@@ -117,7 +117,7 @@ func HandleMsg(c *Client, msg []byte) {
 
 			if ok {
 				res := model.Response{
-					Type: model.MSGTypeError,
+					Type: model.MsgTypeError,
 					Msg:  "用户名重复，请重试",
 				}
 				resJson, _ := json.Marshal(res)
@@ -148,7 +148,7 @@ func HandleMsg(c *Client, msg []byte) {
 		break
 	default:
 		res := model.Response{
-			Type: model.MSGTypeError,
+			Type: model.MsgTypeError,
 			Msg:  "消息错误，请重试",
 		}
 		resJson, _ := json.Marshal(res)
