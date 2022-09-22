@@ -1,7 +1,7 @@
 package ws
 
 import (
-	"chatroom/services/model"
+	"github.com/lyzco/multiPersonChat/model"
 	"sync"
 	"time"
 )

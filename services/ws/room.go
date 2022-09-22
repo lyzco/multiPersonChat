@@ -1,8 +1,8 @@
 package ws
 
 import (
-	"chatroom/services/model"
 	"encoding/json"
+	"github.com/lyzco/multiPersonChat/model"
 	"strconv"
 	"strings"
 	"sync"

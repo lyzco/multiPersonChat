@@ -1,9 +1,9 @@
 package ws
 
 import (
-	"chatroom/services/model"
 	"encoding/json"
 	"github.com/gorilla/websocket"
+	"github.com/lyzco/multiPersonChat/model"
 	"go.uber.org/zap"
 	"runtime/debug"
 	"strconv"
