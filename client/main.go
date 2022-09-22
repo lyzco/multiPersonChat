@@ -1,10 +1,11 @@
 package main
 
 import (
-	"chatroom/client/model"
 	"encoding/json"
 	"fmt"
+	"github.com/fatih/color"
 	"github.com/gorilla/websocket"
+	"github.com/lyzco/multiPersonChat/model"
 	"go.uber.org/zap"
 	"log"
 	"net/http"
@@ -12,12 +13,16 @@ import (
 )
 
 func help() {
-	str := "\n   ___  _____     __                       \n  / __\\/__   \\   /__\\ ___   ___  _ __ ___  \n / /     / /\\/  / \\/// _ \\ / _ \\| '_ ` _ \\ \n/ /___  / /    / _  \\ (_) | (_) | | | | | |\n\\____/  \\/     \\/ \\_/\\___/ \\___/|_| |_| |_|\n                                           \n"
-	fmt.Printf("\n %c[1;40;32m%s%c[0m\n\n", 0x1B, str, 0x1B)
-
+	str := "   ___  _____     __                       " +
+		"\n  / __\\/__   \\   /__\\ ___   ___  _ __ ___  " +
+		"\n / /     / /\\/  / \\/// _ \\ / _ \\| '_ ` _ \\ " +
+		"\n/ /___  / /    / _  \\ (_) | (_) | | | | | |" +
+		"\n\\____/  \\/     \\/ \\_/\\___/ \\___/|_| |_| |_|" +
+		"\n                                           "
+	color.Green(str)
 }
 
-func initWs() *websocket.Conn {
+func connectWs() *websocket.Conn {
 	var wsUrl = "ws://127.0.0.1:9502/ws"
 	ws, _, err := websocket.DefaultDialer.Dial(wsUrl, http.Header{})
 	if err != nil {
@@ -63,7 +68,7 @@ optCheck:
 				fmt.Printf("请输入房间号：")
 				fmt.Scanf("%d", &roomId)
 				if roomId > 9999 {
-					ws = initWs()
+					ws = connectWs()
 					requestData = model.Request{
 						Type: model.MsgTypeJoin, Data: map[string]interface{}{
 							"userName": userName,
@@ -77,7 +82,7 @@ optCheck:
 				fmt.Printf("请输入房间名称：")
 				fmt.Scanf("%s", &roomName)
 				if roomName != "" {
-					ws = initWs()
+					ws = connectWs()
 					requestData = model.Request{
 						Type: model.MsgTypeCreate,
 						Data: map[string]string{
