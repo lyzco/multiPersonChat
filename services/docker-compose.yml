@@ -1,0 +1,12 @@
+version: '3.6'
+
+services:
+  services:
+    container_name: go_images
+    #    image: go_imagesss
+    ports:
+      - "9502:9502"
+    volumes:
+      - ./:/go/src/code
+    build:
+      dockerfile: Dockerfile
