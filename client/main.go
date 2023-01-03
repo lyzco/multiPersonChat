@@ -70,7 +70,8 @@ optCheck:
 				if roomId > 9999 {
 					ws = connectWs()
 					requestData = model.Request{
-						Type: model.MsgTypeJoin, Data: map[string]interface{}{
+						Type: model.MsgTypeJoin,
+						Data: map[string]interface{}{
 							"userName": userName,
 							"roomId":   roomId,
 						}}
